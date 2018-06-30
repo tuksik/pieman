@@ -19,6 +19,8 @@ alpine-3.7-armhf:
   - https://github.com/raspberrypi/firmware/raw/master/boot/start.elf
   - https://github.com/raspberrypi/firmware/raw/master/boot/start_cd.elf
   - https://github.com/raspberrypi/firmware/raw/master/boot/start_x.elf
+  - https://github.com/RPi-Distro/firmware-nonfree/blob/master/brcm/brcmfmac43430-sdio.bin:firmware/brcm/brcmfmac43430-sdio.bin
+  - https://github.com/RPi-Distro/firmware-nonfree/blob/master/brcm/brcmfmac43430-sdio.txt:firmware/brcm/brcmfmac43430-sdio.txt
   base: tzdata
   kernel:
     package: linux-rpi2
