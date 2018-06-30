@@ -24,25 +24,32 @@ check_if_variable_is_set SOURCE_DIR
 # sources and put them in the directory specified via BOOT.
 boot="`get_attr ${OS} boot`"
 for f in ${boot}; do
+    # Split the name of the target file or directory into two parts:
+    # original name and copy name.
+    FILE_NAMES=($(echo "${f//->/$'\n'}"))
+    source_file=""
+
     if [ ! -z `echo ${f} | egrep "^https://|^http://|^ftp://"` ]; then
-        info "downloading ${f} to ${BOOT}"
-        wget -q -O ${BOOT}/`basename ${f}` ${f}
+        info "downloading ${FILE_NAMES[0]} to ${BOOT}"
+        source_file="${BOOT}/$(basename "${FILE_NAMES[0]}")"
+        wget -q -O "${source_file}" "${FILE_NAMES[0]}"
     elif [[ ${f:0:1} == "/" ]]; then
-        # Split the name of the target file or directory into two parts:
-        # original name and copy name.
-        IFS=':' read -ra FILE_NAMES <<< "${R}/${f}"
-
-        info "copying ${FILE_NAMES[0]} to ${BOOT}"
-
-        if [ -z ${FILE_NAMES[1]} ]; then
-            # If the name of the copy is not specified, use the original one.
-            cp -r ${FILE_NAMES[0]} ${BOOT}
-        else
-            info "`basename ${FILE_NAMES[0]}` was renamed into ${FILE_NAMES[1]}"
-            cp -r ${FILE_NAMES[0]} ${BOOT}/${FILE_NAMES[1]}
-        fi
+        info "copying ${R}${FILE_NAMES[0]} to ${BOOT}"
+        cp -r "${R}"${FILE_NAMES[0]} "${BOOT}"
+        source_file="${BOOT}/${FILE_NAMES[0]}"
     else
         info "copying `dirname ${YML_FILE}`/${f} to ${BOOT}"
-        cp ${SOURCE_DIR}/${f} ${BOOT}
+        cp "${SOURCE_DIR}/${FILE_NAMES[0]}" "${BOOT}"
+        source_file="${BOOT}/${FILE_NAMES[0]}"
+    fi
+
+    if [ ! -z "${FILE_NAMES[1]}" ]; then
+        info "renaming ${source_file} into ${FILE_NAMES[1]}"
+        dir="$(dirname "${FILE_NAMES[1]}")"
+        if [ ! -z "${dir}" ]; then
+            mkdir -p "${BOOT}/${dir}"
+        fi
+
+        mv "${source_file}" "${BOOT}/${FILE_NAMES[1]}"
     fi
 done
