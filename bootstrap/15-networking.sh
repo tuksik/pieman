@@ -75,4 +75,9 @@ if is_alpine; then
     # The networking service should depend on the local service since one of
     # the scripts from /etc/local.d raises the network interface.
     sed -i '/^\tneed/ s/$/ local/' "${ETC}/init.d/networking"
+
+    if ${ENABLE_WIRELESS}; then
+        chroot_exec wpa_passphrase ${WIRELESS_SSID} ${WIRELESS_PASSPHRASE} > ${ETC}/wpa_supplicant/wpa_supplicant.conf
+        chroot_exec rc-update add wpa_supplicant boot
+    fi
 fi

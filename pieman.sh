@@ -66,6 +66,8 @@ def_var ENABLE_UNIVERSE false
 
 def_var ENABLE_USER true
 
+def_var ENABLE_WIRELESS false
+
 def_var HOST_NAME "pieman-${DEVICE}"
 
 def_var IMAGE_OWNERSHIP "$(id -u "$(stat -c "%U" "$0")"):$(id -g "$(stat -c "%G" "$0")")"
@@ -91,6 +93,10 @@ def_var TIME_ZONE "Etc/UTC"
 def_var USER_NAME "cusdeb"
 
 def_protected_var USER_PASSWORD "secret"
+
+def_protected_var WIRELESS_SSID ""
+
+def_protected_var WIRELESS_PASSPHRASE ""
 
 #
 # Internal params

@@ -36,6 +36,14 @@ add_package_to_includes ifupdown
 if is_alpine; then
     add_package_to_includes e2fsprogs-extra
     add_package_to_includes util-linux
+    if ${ENABLE_WIRELESS}; then
+        # https://wiki.alpinelinux.org/wiki/Connecting_to_a_wireless_access_point#Install_necessary_drivers_and_software
+        add_package_to_includes wireless-tools
+        add_package_to_includes wpa_supplicant
+        # https://wiki.alpinelinux.org/wiki/Raspberry_Pi_3_-_Configuring_it_as_wireless_access_point_-AP_Mode#Install_the_necessary_firmware
+        add_package_to_includes linux-firmware # linux-firmware-brcm
+        add_package_to_includes raspberrypi-libs
+    fi
 elif is_debian_based; then
     # Networking
     add_package_to_includes netbase
