@@ -12,11 +12,11 @@ Alpine Linux is a lightweight, independently developed and non-commercial Linux 
   </tr>
   <tr>
     <td>Linux kernel</td>
-    <td>4.9</td>
+    <td>4.14</td>
   </tr>
   <tr>
     <td>musl</td>
-    <td>1.1.18</td>
+    <td>1.1.19</td>
   </tr>
   <tr>
     <td>GCC</td>
@@ -24,26 +24,26 @@ Alpine Linux is a lightweight, independently developed and non-commercial Linux 
   </tr>
   <tr>
     <td>OpenRC</td>
-    <td>0.24.1</td>
+    <td>0.35.5</td>
   </tr>
   <tr>
     <td colspan="2"><b>Development tools</b></td>
   </tr>
   <tr>
     <td>Go</td>
-    <td>1.9.4</td>
+    <td>1.10.1</td>
   </tr>
   <tr>
     <td>PHP</td>
-    <td>7.1.17</td>
+    <td>7.2.7</td>
   </tr>
   <tr>
     <td>Python</td>
-    <td>3.6.3</td>
+    <td>3.6.4</td>
   </tr>
   <tr>
     <td>Ruby</td>
-    <td>2.4.4</td>
+    <td>2.5.1</td>
   </tr>
   <tr>
     <td colspan="2"><b>Server software</b></td>
@@ -54,7 +54,7 @@ Alpine Linux is a lightweight, independently developed and non-commercial Linux 
   </tr>
   <tr>
     <td>Nginx</td>
-    <td>1.12.2</td>
+    <td>1.14.0</td>
   </tr>
   <tr>
     <td>PostgreSQL</td>
@@ -62,6 +62,6 @@ Alpine Linux is a lightweight, independently developed and non-commercial Linux 
   </tr>
   <tr>
     <td>MariaDB</td>
-    <td>10.1.32</td>
+    <td>10.2.15</td>
   </tr>
 </table>
