@@ -375,6 +375,10 @@ create_image() {
     # The size of the partition which stores the kernel and RPi blobs.
     local boot_partition_size=100 # in megabytes
 
+    # In analysing the partitions of the official Raspbian image the following
+    # number was obtained.
+    local magic_number=948223
+
     # The size of the target image.
     local image_size=0
 
@@ -387,13 +391,13 @@ create_image() {
 
     image_size=$(( root_partition_size + (boot_partition_size + alignment_x2) * 1024 * 1024 ))
 
-    dd if=/dev/zero of="${IMAGE}" bs=1 seek=${image_size} count=1
+    dd if=/dev/zero of="${IMAGE}" bs=1 seek=$((4 * 1024 * 1024 * 1024)) count=1
 
     parted "${IMAGE}" mktable msdos
 
-    parted "${IMAGE}" mkpart p fat32 4MiB "$(( boot_partition_size + alignment ))MiB"
+    parted "${IMAGE}" mkpart p fat32 4MiB "$(( boot_partition_size * 1024 * 1024 ))B"
 
-    parted -s "${IMAGE}" -- mkpart primary ext2 "$(( boot_partition_size + alignment_x2 ))MiB" -1s
+    parted -s "${IMAGE}" -- mkpart primary ext2 "$(( boot_partition_size * 1024 * 1024 + magic_number ))B" -1s
 
     info "${IMAGE} of size ${image_size}K was successfully created"
 }
