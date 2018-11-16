@@ -1,0 +1,9 @@
+# Maintainer: Evgeny Golyshev <eugulixes@gmail.com>
+
+debian-buster-armhf:
+  repos:
+  - deb http://deb.debian.org/debian buster main
+  boot:
+  - cmdline.txt
+  kernel:
+    package: linux-image-armmp
