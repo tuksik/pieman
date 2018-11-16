@@ -172,7 +172,7 @@ The built image will be located in the `build` directory. By the way, you can sp
 |---------------------------------|:--------------:|:---------------------:|:---------------------:|:---------------------------:|
 | Alpine 3.7                      |        | 32bit  | 32bit        |        |
 | Devuan 1 «Jessie»               |        | 32bit  | 32bit        |        |
-| Kali Linux rolling              |        |        | 32bit        |        |
+| Kali Linux rolling              |        |        | 32bit, 64bit |        |
 | Raspbian 9 «Stretch»            | 32bit  | 32bit  | 32bit        | 32bit  |
 | Ubuntu 16.04 «Xenial Xerus»     |        | 32bit  |              |        |
 | Ubuntu 18.04 «Bionic Beaver»    |        | 32bit  | 32bit, 64bit |        |
@@ -184,6 +184,7 @@ The operating system of the target image is specified via the `OS` environment v
 | Alpine [3.7](https://alpinelinux.org/posts/Alpine-3.7.0-released.html) (32-bit)                                      | alpine-3.7-armhf       |
 | Devuan 1 «[Jessie](https://lists.dyne.org/lurker/message/20170525.180739.f86cd310.en.html#devuan-announce)» (32-bit) | devuan-jessie-armhf    |
 | Kali Linux rolling (32-bit)                                                                                          | kali-rolling-armhf
+| Kali Linux rolling (64-bit)                                                                                          | kali-rolling-arm64     |                      
 | Raspbian 9 «[Stretch](https://raspberrypi.org/blog/raspbian-stretch/)» (32-bit)                                      | raspbian-stretch-armhf |
 | Ubuntu 16.04 «[Xenial Xerus](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes)» (32-bit)                             | ubuntu-xenial-armhf    |
 | Ubuntu 18.04 «[Bionic Beaver](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes)» (32-bit)                           | ubuntu-bionic-armhf    |
